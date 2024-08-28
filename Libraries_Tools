@@ -1,0 +1,43 @@
+For your CRM project, here are some recommended libraries to use, all of which are free and widely supported:
+
+### 1. **Web Framework**
+   - **Flask**: A lightweight and easy-to-use web framework. Ideal for beginners and small projects.
+   - **Flask-WTF**: Adds form validation and CSRF protection to Flask, making it easier to work with web forms.
+
+### 2. **Database**
+   - **SQLAlchemy**: A powerful ORM (Object-Relational Mapping) library that makes it easier to interact with databases using Python.
+   - **SQLite**: A lightweight, file-based database that is part of the Python standard library. Ideal for small projects and local deployments.
+   - **Flask-SQLAlchemy**: Integrates SQLAlchemy with Flask, simplifying database management.
+
+### 3. **Email Notifications**
+   - **Flask-Mail**: A simple way to send emails from your Flask application. It supports various email backends like SMTP.
+   - **smtplib**: Part of Python's standard library, used to send emails using the Simple Mail Transfer Protocol (SMTP).
+
+### 4. **Scheduling**
+   - **schedule**: A lightweight library for scheduling tasks. You can use it to run periodic tasks like checking the age of leads and sending notifications.
+
+### 5. **User Authentication and Access Control**
+   - **Flask-Login**: Manages user sessions and provides simple user authentication and role management for Flask applications.
+
+### 6. **Form Handling and Validation**
+   - **Flask-WTF**: Adds easy-to-use form handling and validation with WTForms, a flexible form rendering and validation library.
+   - **WTForms**: The underlying library for Flask-WTF, handling form validation and processing.
+
+### 7. **Error Handling and Logging**
+   - **logging**: Part of Python’s standard library, it provides a flexible framework for emitting log messages from Python programs.
+   - **Flask-ErrorHandler**: Provides better error handling and reporting in Flask applications.
+
+### 8. **Testing**
+   - **unittest**: Python's built-in testing framework, suitable for writing and running unit tests.
+   - **pytest**: A more advanced and user-friendly testing framework, which simplifies writing tests and provides powerful features like fixtures and plugins.
+
+### 9. **Environment Management**
+   - **virtualenv**: A tool to create isolated Python environments, ensuring that your project dependencies are separated from your global Python installation.
+   - **pip**: The package installer for Python, used to install and manage project dependencies.
+
+### 10. **Miscellaneous**
+   - **Flask-Bootstrap**: Helps integrate Bootstrap into your Flask templates, providing a responsive and consistent UI framework.
+   - **pandas**: Useful for data manipulation and analysis, particularly if you want to generate reports from your lead data.
+   - **pyinstaller**: A tool to convert Python scripts into standalone executables, so your application can be easily deployed on other machines.
+
+These libraries should cover the core functionality of your CRM project, from web development and database management to user authentication, notifications, and more.
