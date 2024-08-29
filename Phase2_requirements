@@ -1,0 +1,48 @@
+Project Addition: Agent Assignment and Scoring System
+Overview
+In this phase of the Lead Classification System project, the goal is to extend the functionality by introducing an "agents" database and assigning leads to agents. Each agent will have a starting score based on the status of the leads they are assigned, with specific scoring criteria to evaluate their performance. This system aims to enhance lead management and performance tracking.
+
+Requirements
+Database Schema for Agents
+
+Agent ID: A unique identifier for each agent (e.g., integer or UUID).
+Agent Location: The office location for each agent. Possible values are North, South, or Midwest.
+Agent Score: A score assigned to each agent based on the leads they are assigned.
+Lead Assignment
+
+Randomly assign 50 leads to each agent.
+Ensure that all leads from the "leads" database are distributed among agents without overlap.
+Scoring System
+
+Worked Leads: Leads marked as "worked" will contribute positively to an agent's score.
+Urgent Leads: Leads classified as "urgent" will contribute negatively to an agent's score.
+Scoring Formula: Define a formula to calculate the starting score based on the number of worked and urgent leads assigned to the agent.
+Libraries and Tools
+
+pandas: For handling and manipulating lead and agent data.
+random: For random assignment of leads to agents.
+SQLAlchemy: For ORM-based interactions with the database to manage agents and their assignments.
+Flask: For any necessary web-based interactions with the agent and lead data, if applicable.
+Concepts and Processes
+
+Database Design: Design and implement a new database schema to include agents and their attributes.
+Lead Distribution: Implement logic to randomly assign leads to agents while ensuring fair distribution.
+Scoring Mechanism: Develop a method for calculating and updating agent scores based on assigned leads.
+Data Integrity: Ensure that the assignment process maintains data integrity and prevents duplication of leads.
+Implementation Steps
+
+Define Database Schema: Design and create the "agents" table in the database with fields for Agent ID, Location, and Score.
+Generate Agents: Populate the agents database with a predefined number of agents, each with a unique ID and a specified location.
+Assign Leads: Implement logic to randomly assign 50 leads to each agent. Ensure that all leads are distributed and no agent receives duplicate leads.
+Calculate Scores: Implement the scoring formula to calculate the initial score for each agent based on their assigned leads.
+Update Database: Update the agents' records in the database with their calculated scores.
+Testing and Validation
+
+Unit Testing: Create tests for lead assignment and scoring functions.
+Integration Testing: Test the integration of the agents' assignment and scoring system with the existing lead database.
+Documentation
+
+Document the schema changes, lead assignment logic, and scoring mechanism.
+Provide clear instructions for setup, execution, and validation of the new system.
+Summary
+This project addition will enhance the Lead Classification System by incorporating agent management and performance scoring. By randomly assigning leads and evaluating agent performance based on lead status, this system aims to improve lead handling and provide actionable insights into agent effectiveness.
