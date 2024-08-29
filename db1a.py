@@ -1,18 +1,21 @@
 import csv
-from Flask_Import import app, db, Lead
 from datetime import datetime
+from Flask_Import import app, db, Lead
 
-csv_file_path = 'leads_data.csv'
+csv_file_path = 'cleaned_leads.csv'
 
 
 def import_csv_to_db(file_path):
     with app.app_context():
         with open(file_path, newline='', encoding='utf-8') as csvfile:
             reader = csv.DictReader(csvfile)
+
+            # Prepare a list to hold the lead objects for batch insert
+            leads_to_add = []
+
             for row in reader:
                 # Debugging statements
                 print("Row data:", row)
-                print("Type of 'First Name':", type(row['First Name']))
 
                 # Data parsing
                 first_name = row['First Name'].strip() if row['First Name'] else None
@@ -46,8 +49,28 @@ def import_csv_to_db(file_path):
                     worked=worked
                 )
 
-                db.session.add(lead)
-                db.session.commit()
+                # Add the lead to the list
+                leads_to_add.append(lead)
+
+                # Commit in batches of 1000 to optimize performance
+                if len(leads_to_add) >= 1000:
+                    try:
+                        db.session.bulk_save_objects(leads_to_add)
+                        db.session.commit()
+                        leads_to_add = []  # Reset the list after committing
+                    except Exception as e:
+                        print(f"Error during batch commit: {e}")
+                        db.session.rollback()
+
+            # Commit any remaining leads not yet committed
+            if leads_to_add:
+                try:
+                    db.session.bulk_save_objects(leads_to_add)
+                    db.session.commit()
+                except Exception as e:
+                    print(f"Error during final batch commit: {e}")
+                    db.session.rollback()
 
 
-import_csv_to_db('leads_data.csv')
+if __name__ == "__main__":
+    import_csv_to_db(csv_file_path)

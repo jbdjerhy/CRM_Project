@@ -17,19 +17,21 @@ raw['Date Created'] = pd.to_datetime(raw['Date Created'], errors='coerce')
 # print(raw.describe())
 # print(raw.dtypes)
 
-print("Missing values in each column:\n", raw.isnull().sum())
+# print("Missing values in each column:\n", raw.isnull().sum())
 
-raw_cleaned = raw.fillna({
-    'First Name': 'Unknown',
-    'Last Name': 'Unknown',
-    'State': 'Unknown',
-    'City': 'Unknown',
-    'ZIP': 00000,  # or use median
-    'Date Created': pd.Timestamp('2023-01-01'),  # Default date
-    'Worked': False
-})
+raw['First Name'].fillna('Unknown', inplace=True)
+raw['Last Name'].fillna('Unknown', inplace=True)
+raw['State'].fillna('Unknown', inplace=True)
+raw['City'].fillna('Unknown', inplace=True)
+raw['ZIP'].fillna(00000, inplace=True)  # For numeric columns
+raw['Date Created'].fillna(pd.Timestamp('2023-01-01'), inplace=True)
+raw['Worked'].fillna(False, inplace=True)
+
+raw_cleaned = raw
 
 print("Missing values after cleaning:\n", raw_cleaned.isnull().sum())
+
+print(raw_cleaned[raw_cleaned.isnull().any(axis=1)])
 
 raw_cleaned.to_csv('cleaned_leads.csv', index=False)
 
