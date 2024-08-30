@@ -25,12 +25,29 @@ class Lead(db.Model):
     worked = db.Column(db.Boolean, nullable=False)
 
 
+# Define the Agent model
+class Agent(db.Model):
+    agent_id = db.column(db.Integer, primary_key=True)
+    first_name = db.column(db.string(50), nullable=False)
+    last_name = db.column(db.string(50), nullable=False)
+    location = db.column(db.string(50), nullable=False)
+    score = db.column(db.Integer)
+
+
 # Route to display lead information
 @app.route('/leads')
 def display_leads():
     # Query all leads from the database
     leads = Lead.query.all()
     return render_template('leads.html', leads=leads)
+
+
+# Route to display lead information
+@app.route('/agents')
+def display_leads():
+    # Query all leads from the database
+    agents = Agent.query.all()
+    return render_template('agents.html', agents=agents)
 
 
 if __name__ == '__main__':
