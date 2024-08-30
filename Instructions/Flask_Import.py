@@ -1,3 +1,4 @@
+import csv
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 import os
@@ -27,11 +28,11 @@ class Lead(db.Model):
 
 # Define the Agent model
 class Agent(db.Model):
-    agent_id = db.column(db.Integer, primary_key=True)
-    first_name = db.column(db.string(50), nullable=False)
-    last_name = db.column(db.string(50), nullable=False)
-    location = db.column(db.string(50), nullable=False)
-    score = db.column(db.Integer)
+    agent_id = db.Column(db.Integer, primary_key=True)
+    first_name = db.Column(db.String(50), nullable=False)
+    last_name = db.Column(db.String(50), nullable=False)
+    location = db.Column(db.String(50), nullable=False)
+    score = db.Column(db.Float)
 
 
 # Route to display lead information
